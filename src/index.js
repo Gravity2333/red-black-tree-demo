@@ -27,7 +27,7 @@ deleteButton.addEventListener("click", function () {
     alert("请输入删除节点key");
   } else {
     if (undefined === rbTree.search(deleteInput.value)) {
-      alert("节点key: ", deleteInput.value, "不存在!");
+      alert(`节点key:${deleteInput.value} 不存在!`);
     } else {
       rbTree.delete(deleteInput.value);
       updater(rbTree.getEchartsData());

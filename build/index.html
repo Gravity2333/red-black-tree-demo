@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>red-black-tree-demo</title>
+    <title>红黑树DEMO</title>
     <style>
         body html {
             padding: 0px;
             border: 0px;
         }
 
-        .toolBar{
+        body {
+
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23fff' /%3E%3Crect x='50%' width='1' height='100%' fill='rgb(203 213 225)' /%3E%3Crect y='50%' width='100%' height='1' fill='rgb(203 213 225)' /%3E%3C/svg%3E%0A");
+        }
+
+        .toolBar {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
             width: 99%;
@@ -19,26 +24,65 @@
             margin: 10px;
             height: 40px;
             background-color: #f1f1f1;
+            position: fixed;
+            top: 0px;
+            z-index: 99;
         }
 
-        input{
-            height: 30px;
-            vertical-align: middle;
+        input {
+            padding: 10px;
+            /* 内边距 */
+            border: 1px solid #ccc;
+            /* 边框 */
+            border-radius: 5px;
+            /* 边框圆角 */
+            outline: none;
+            /* 去掉点击输入框时的默认边框 */
+            font-size: 12px;
+            /* 字体大小 */
+            width: 100px;
+            /* 宽度 */
+            transition: border-color 0.3s;
+            /* 边框颜色变化过渡 */
         }
 
-        button{
+        .button {
             cursor: pointer;
+            border: none;
+            color: white;
+            padding: 7px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 8px;
+            /* 圆角边框 */
+            transition: background-color 0.3s;
+            /* 平滑背景颜色过渡 */
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            /* 鼠标悬停时的背景颜色 */
+        }
+
+        .button:active {
+            background-color: #3e8e41;
+            /* 鼠标点击时的背景颜色 */
         }
     </style>
-<script defer src="main-abd6eeef-bundle.js"></script></head>
+<script defer src="main-561c8ae9-bundle.js"></script></head>
 
 <body style="height:100%">
     <div style="height:100%">
         <div class="toolBar">
             <input type="number" id="insert_input">
-            <button id="insert_button" style="background-color:green">插入</button>
+            <button class="button" id="insert_button" style="background-color:green">插入</button>
             <input type="number" id="delete_input">
-            <button id="delete_button" style="background-color:red">删除</button>
+            <button class="button" id="delete_button" style="background-color:red">删除</button>
+            <button class="button" id="clr_button" style="background-color:rgb(0, 128, 255)">清空</button>
         </div>
         <div id="echart-root" style="height:100%"></div>
     </div>
