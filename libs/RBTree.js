@@ -635,7 +635,7 @@ export default class RBTree {
 
   // 搜索节点
   search(key) {
-    return this._findTreeNodeByKey(this.root, key)?.value;
+    return this._findTreeNodeByKey(this.root, key);
   }
 
   // 前序遍历
