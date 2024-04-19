@@ -17,6 +17,8 @@ insertButton.addEventListener("click", function () {
     alert("请输入插入节点key");
   } else {
     rbTree.insert(insertInput.value);
+
+    console.log(    rbTree.root)
     updater(rbTree.getEchartsData());
   }
 });

@@ -182,6 +182,7 @@ export default class RBTree {
     if (axisNode.parent === null) {
       // root节点
       this.root = node;
+      node.parent = null;
     } else {
       const axisNodeInParentPosition = this._getNodePositionInParent(
         axisNode.parent,
@@ -209,6 +210,7 @@ export default class RBTree {
     if (axisNode.parent === null) {
       // root节点
       this.root = node;
+      node.parent = null;
     } else {
       const axisNodeInParentPosition = this._getNodePositionInParent(
         axisNode.parent,
@@ -216,7 +218,7 @@ export default class RBTree {
       );
       this._insertNode(axisNode.parent, axisNodeInParentPosition, node);
     }
-    if (node.right) {
+    if (node.left) {
       // 挂载node左节点到axisNode右节点
       this._insertNode(axisNode, RBTree.EChildPosition.RIGHT, node.left);
     }
@@ -314,11 +316,11 @@ export default class RBTree {
         adjustNodePosition === RBTree.EChildPosition.RIGHT
       ) {
         // 左旋
-        this._leftRound(parent, newNode);
+        this._leftRound(parent, adjustNode);
         // 右旋
-        this._rightRound(grandParent, newNode);
+        this._rightRound(grandParent, adjustNode);
         // 上色
-        newNode.color = RBTree.ERBTNodeColor.BLACK;
+        adjustNode.color = RBTree.ERBTNodeColor.BLACK;
         grandParent.color = RBTree.ERBTNodeColor.RED;
       }
 
@@ -328,11 +330,11 @@ export default class RBTree {
         adjustNodePosition === RBTree.EChildPosition.LEFT
       ) {
         // 右旋
-        this._rightRound(parent, newNode);
+        this._rightRound(parent, adjustNode);
         // 左旋
-        this._leftRound(grandParent, newNode);
+        this._leftRound(grandParent, adjustNode);
         // 上色
-        newNode.color = RBTree.ERBTNodeColor.BLACK;
+        adjustNode.color = RBTree.ERBTNodeColor.BLACK;
         grandParent.color = RBTree.ERBTNodeColor.RED;
       }
     }
@@ -573,7 +575,7 @@ export default class RBTree {
         itemStyle: {
           color: "black",
         },
-        symbol:'rect',
+        symbol: "rect",
         symbolSize: 30,
       };
     }

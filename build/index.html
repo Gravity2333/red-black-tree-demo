@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height:100%">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>red-black-tree-demo</title>
-<script defer src="main-be1eef17-bundle.js"></script></head>
-<body>
-    
+    <style>
+        body html {
+            padding: 0px;
+            border: 0px;
+        }
+
+        .toolBar{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 99%;
+            border-radius: 5px;
+            margin: 10px;
+            height: 40px;
+            background-color: #f1f1f1;
+        }
+
+        input{
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        button{
+            cursor: pointer;
+        }
+    </style>
+<script defer src="main-abd6eeef-bundle.js"></script></head>
+
+<body style="height:100%">
+    <div style="height:100%">
+        <div class="toolBar">
+            <input type="number" id="insert_input">
+            <button id="insert_button" style="background-color:green">插入</button>
+            <input type="number" id="delete_input">
+            <button id="delete_button" style="background-color:red">删除</button>
+        </div>
+        <div id="echart-root" style="height:100%"></div>
+    </div>
 </body>
+
 </html>
