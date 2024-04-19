@@ -1,4 +1,4 @@
-import { initEchartsTree } from "./utils";
+import { initEchartsTree } from "./utils/treeRender.js";
 import RBTree from "../libs/RBTree";
 
 const rbTree = new RBTree();
@@ -17,8 +17,6 @@ insertButton.addEventListener("click", function () {
     alert("请输入插入节点key");
   } else {
     rbTree.insert(insertInput.value);
-
-    console.log(    rbTree.root)
     updater(rbTree.getEchartsData());
   }
 });

@@ -334,7 +334,7 @@ export default class RBTree {
         // 左旋
         this._leftRound(grandParent, adjustNode);
         // 上色
-        adjustNode.color = RBTree.ERBTNodeColor.BLACK;
+        newNode.color = RBTree.ERBTNodeColor.BLACK;
         grandParent.color = RBTree.ERBTNodeColor.RED;
       }
     }
@@ -371,7 +371,7 @@ export default class RBTree {
     if (this._isNodeNull(toBeDeletedNode)) return false;
     // 如果是跟节点的情况，直接删除
     if (toBeDeletedNode === this.root) {
-      this.root === null;
+      this.root = null;
       return true;
     }
     // 不是跟节点
