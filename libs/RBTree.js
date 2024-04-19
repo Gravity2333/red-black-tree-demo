@@ -534,7 +534,7 @@ export default class RBTree {
   /** 前序遍历方法 */
   _perOrderTraversalNodes(node, callback) {
     if (this._isNodeNull(node)) return;
-    callback(node.key, node.value);
+    callback(node.key, node.value, node.color);
     this._perOrderTraversalNodes(node.left, callback);
     this._perOrderTraversalNodes(node.right, callback);
   }
@@ -543,7 +543,7 @@ export default class RBTree {
   _inOrderTraversalNodes(node, callback) {
     if (this._isNodeNull(node)) return;
     this._perOrderTraversalNodes(node.left, callback);
-    callback(node.key, node.value);
+    callback(node.key, node.value, node.color);
     this._perOrderTraversalNodes(node.right, callback);
   }
 
@@ -552,7 +552,7 @@ export default class RBTree {
     if (this._isNodeNull(node)) return;
     this._perOrderTraversalNodes(node.left, callback);
     this._perOrderTraversalNodes(node.right, callback);
-    callback(node.key, node.value);
+    callback(node.key, node.value, node.color);
   }
 
   /** 默认遍历回调 */
@@ -561,6 +561,30 @@ export default class RBTree {
       key,
       value,
     });
+  }
+
+  /** 获取echarts数据 */
+  _toEchartsData(node) {
+    const data = {};
+    if (!node) return {};
+    if (node.key === RBTree.NIL_KEY) {
+      return {
+        name: "NIL",
+        itemStyle: {
+          color: "black",
+        },
+        symbol:'rect',
+        symbolSize: 30,
+      };
+    }
+    data.name = node.key;
+    data.itemStyle = {
+      color: node.color === RBTree.ERBTNodeColor.RED ? "red" : "black",
+    };
+    data.children = [];
+    data.children.push(this._toEchartsData(node.left));
+    data.children.push(this._toEchartsData(node.right));
+    return data;
   }
 
   /** ------------- 外部暴露方法 --------------- */
@@ -651,5 +675,10 @@ export default class RBTree {
       current = current.right;
     }
     return { key: previous.key, value: previous.value };
+  }
+
+  getEchartsData() {
+    if (null === this.root) return {};
+    return this._toEchartsData(this.root);
   }
 }
