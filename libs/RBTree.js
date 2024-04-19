@@ -334,7 +334,7 @@ export default class RBTree {
         // 左旋
         this._leftRound(grandParent, adjustNode);
         // 上色
-        newNode.color = RBTree.ERBTNodeColor.BLACK;
+        adjustNode.color = RBTree.ERBTNodeColor.BLACK;
         grandParent.color = RBTree.ERBTNodeColor.RED;
       }
     }
@@ -677,6 +677,10 @@ export default class RBTree {
       current = current.right;
     }
     return { key: previous.key, value: previous.value };
+  }
+
+  clear() {
+    this.root = null;
   }
 
   getEchartsData() {

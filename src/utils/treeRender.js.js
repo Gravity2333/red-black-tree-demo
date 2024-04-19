@@ -77,8 +77,9 @@ export function initEchartsTree() {
   myChart.setOption(option);
   return (initData) => {
     // 配置项
-    option.series[0].data = [initData]
+    option.series[0].data = Object.keys(initData).length === 0 ? [] : [initData];
+    console.log(option)
     // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption({...option},true);
+    myChart.setOption({ ...option }, true);
   };
 }

@@ -11,6 +11,7 @@ const deleteInput = document.getElementById("delete_input");
 // 获取按钮
 const insertButton = document.getElementById("insert_button");
 const deleteButton = document.getElementById("delete_button");
+const clrButton = document.getElementById("clr_button");
 // 绑定按钮事件
 insertButton.addEventListener("click", function () {
   if (!insertInput.value) {
@@ -32,4 +33,9 @@ deleteButton.addEventListener("click", function () {
       updater(rbTree.getEchartsData());
     }
   }
+});
+
+clrButton.addEventListener("click", function () {
+  rbTree.clear();
+  updater(rbTree.getEchartsData());
 });
